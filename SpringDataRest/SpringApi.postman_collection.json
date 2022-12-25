@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "07d27859-de5e-498c-ae1b-5c81251107bf",
+		"name": "SpringApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21756924"
+	},
+	"item": [
+		{
+			"name": "PostApi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Mario\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/api/student",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetApi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/api/student",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetNome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/mionome/nome",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"mionome",
+						"nome"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
