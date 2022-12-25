@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="es1.css">
+</head>
+
+<body>
+    <h1>Blackstone Bistro | Pizza-on-Demand</h1>
+    <p>Our 12 wood fired pizza are available for delivery.Build your custom pizza and we'll deliver it within an hour
+    </p>
+    <div class="form1">
+        <form action="prova.php">
+            <fieldset>
+                <legend>Your information</legend>
+                <label for="name">Name:</label><br>
+                <input type="name" id="name" name="Mail"><br>
+                <label for="text">Adress: </label><br>
+                <input type="text" id="adress" name="adress"><br><br>
+                <label for="text">Telephone Number:</label><br>
+                <input type="text" id="phone" name="phone"><br><br>
+                <textarea inputmode="full-width-latin" placeholder="No more than 400 characters long" rows="3" cols="40" ></textarea>
+                <input type="submit">
+
+            </fieldset>
+        </form>
+    </div>
+    <div class="form2">
+        <h2>Design your dream pizza:</h2>
+        <form action="prova.php">
+            <fieldset>
+                <legend>Pizza specs</legend>
+                <fieldset>
+                    <legend>Crust(choose one)</legend>
+                    <div class="container">   
+                        <input type="radio" id="html" name="fav_language" value="HTML">
+                        <label for="classic" id="classic" aria-checked="true">Classic White</label><br>
+                        <input type="radio" id="classic" name="classic" value="classic">
+                        <label for="multi">Multigrain</label><br>
+                        <input type="radio" id="multi" name="multi" value="multi">
+                        <label for="cheese">Cheese-stuffed crust</label><br>
+                        <input type="radio" id="cheese" name="cheese" value="cheese">
+                        <label for="gluten">Gluten-free</label><br></div>
+                </fieldset>
+                <fieldset>
+                    <legend>Toppings(choose as many as you want</legend>
+                    <div class="container"><input type="checkbox" id="1">
+                        <label for="redsause"> Red Sauce</label><br>
+                        <input type="checkbox" id="2">
+                        <label for="whitesauce"> White Sauce</label><br>
+                    </div>
+                </fieldset>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

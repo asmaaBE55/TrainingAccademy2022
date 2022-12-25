@@ -1,0 +1,44 @@
+.H{
+    background-color: gray;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    letter-spacing: 10px;
+    border: 4px solid black;
+    text-shadow: 2px 2px 2px rgba(176, 16, 16, 0.75);
+}
+body{
+    background-color: aquamarine;
+}
+.body{
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+.ap{
+    text-align: center;
+    color: blue;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+img{
+    padding-top: 0.5cm;
+    width: 10rem;
+    display: block;
+    margin: auto;
+}
+button{
+    display: block;
+    margin: auto;
+}
+.list{
+padding-top: 0cm;
+}
+h3{
+    padding-top: 0%;
+    color: rgb(113, 16, 16);
+    font-weight: bold;
+}
+.hStyle{
+    border: 4px dashed rgb(155, 22, 22);
+    
+}
