@@ -26,9 +26,14 @@ public class CourseController {
         return new ResponseEntity<>(courseList,HttpStatus.OK);
     }
     @PostMapping("/createcourse")
-    public ResponseEntity<Course> createTutorial(@RequestBody Course course) {
+    public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         Course _course = courseRepo.save(course);
         return new ResponseEntity<>(_course, HttpStatus.CREATED);
     }
+    @DeleteMapping("/course/{id}")
+    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("id") long id) {
+        courseRepo.deleteById(id);
 
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
