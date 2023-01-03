@@ -105,6 +105,27 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get course by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9500/api/getcourse/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9500",
+					"path": [
+						"api",
+						"getcourse",
+						"6"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
