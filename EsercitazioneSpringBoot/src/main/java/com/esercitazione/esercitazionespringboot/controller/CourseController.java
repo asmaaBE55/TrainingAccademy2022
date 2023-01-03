@@ -36,4 +36,18 @@ public class CourseController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PutMapping("/courses/{id}")
+    public ResponseEntity<Course> modifyCourse(@PathVariable("id") long id, @RequestBody Course course) {
+        Course existingCourse = courseRepo.getCourseById(id);
+        if (existingCourse == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        existingCourse.setName_course(course.getName_course());
+        existingCourse.setDescription(course.getDescription());
+        Course updateCourse = courseRepo.save(existingCourse);
+        return new ResponseEntity<>(updateCourse, HttpStatus.OK);
+    }
+
+
 }

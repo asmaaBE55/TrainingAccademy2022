@@ -33,7 +33,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"id\": 2,\r\n        \"name_course\": \"matematica\",\r\n        \"description\": \"corso di matematica\"\r\n}",
+					"raw": "{\r\n        \"name_course\": \"Corso X\",\r\n        \"description\": \"description X\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -61,7 +61,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9500/api/course/1",
+					"raw": "http://localhost:9500/api/course/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -70,7 +70,37 @@
 					"path": [
 						"api",
 						"course",
-						"1"
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify course",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name_course\": \"Corso modificato\",\r\n        \"description\": \"description details\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9500/api/courses/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9500",
+					"path": [
+						"api",
+						"courses",
+						"2"
 					]
 				}
 			},
