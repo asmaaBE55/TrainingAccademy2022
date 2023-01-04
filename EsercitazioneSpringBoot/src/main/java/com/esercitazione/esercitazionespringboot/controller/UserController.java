@@ -5,13 +5,11 @@ import com.esercitazione.esercitazionespringboot.model.User;
 import com.esercitazione.esercitazionespringboot.repository.CourseRepo;
 import com.esercitazione.esercitazionespringboot.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping("/user")
@@ -23,9 +21,14 @@ public class UserController {
 
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers() {
-        List<User> users = userRepo.findAll();
-        return ResponseEntity.ok(users);
+        List<User> users = new ArrayList<>();
+        userRepo.findAll().forEach(users::add);
+        if(users.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(users,HttpStatus.OK);
     }
+
 
 
     @PostMapping("/users/{user_id}/course")

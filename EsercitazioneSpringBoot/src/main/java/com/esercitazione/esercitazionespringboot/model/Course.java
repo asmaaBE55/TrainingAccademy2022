@@ -31,7 +31,7 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "courses_users",
              inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users=new LinkedHashSet<>();
