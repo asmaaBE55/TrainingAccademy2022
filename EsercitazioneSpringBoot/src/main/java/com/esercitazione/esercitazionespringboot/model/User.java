@@ -1,8 +1,10 @@
 package com.esercitazione.esercitazionespringboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import javax.validation.constraints.*;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -59,5 +61,9 @@ public class User {
         this.email = email;
         this.password = password;
         this.courses = courses;
+    }
+
+    public void addRole(Role _role) {
+        this.roles.add(_role);
     }
 }
