@@ -39,6 +39,12 @@ public class User {
     private String password;
 
     @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+    @JoinTable(name = "users_roles",
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles =new LinkedHashSet<>();
+
+
+    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
     @JoinTable(name = "courses_users",
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private Set<Course> courses =new LinkedHashSet<>();

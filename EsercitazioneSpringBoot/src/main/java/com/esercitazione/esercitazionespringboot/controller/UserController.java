@@ -19,16 +19,12 @@ public class UserController {
     @Autowired
     UserRepo userRepo;
 
-    @GetMapping("/course/{id}/users")
-    public ResponseEntity<List<User>> getUsers() {
-        List<User> users = new ArrayList<>();
-        userRepo.findAll().forEach(users::add);
-        if(users.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(users,HttpStatus.OK);
-    }
 
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id){
+        User _user = userRepo.getReferenceById(id);
+        return new ResponseEntity<User>(_user,HttpStatus.OK);
+    }
 
 
     @PostMapping("/users/{user_id}/course")
