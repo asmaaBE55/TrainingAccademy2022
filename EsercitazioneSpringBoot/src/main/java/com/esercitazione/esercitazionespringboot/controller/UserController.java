@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     UserRepo userRepo;
 
-    @GetMapping("/users")
+    @GetMapping("/course/{id}/users")
     public ResponseEntity<List<User>> getUsers() {
         List<User> users = new ArrayList<>();
         userRepo.findAll().forEach(users::add);
