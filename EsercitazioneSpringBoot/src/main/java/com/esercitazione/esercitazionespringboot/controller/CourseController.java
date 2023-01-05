@@ -1,22 +1,28 @@
 package com.esercitazione.esercitazionespringboot.controller;
 
 import com.esercitazione.esercitazionespringboot.model.Course;
+import com.esercitazione.esercitazionespringboot.model.User;
 import com.esercitazione.esercitazionespringboot.repository.CourseRepo;
+import com.esercitazione.esercitazionespringboot.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
 public class CourseController {
     @Autowired
     CourseRepo courseRepo;
+    @Autowired
+    private UserRepo userRepo;
 
-    @GetMapping("/courses")
+    @GetMapping("/course")
     public ResponseEntity<List<Course>> getCourses(){
         List<Course> courseList=new ArrayList<Course>();
         courseRepo.findAll().forEach(courseList::add);
@@ -26,7 +32,7 @@ public class CourseController {
         return new ResponseEntity<>(courseList,HttpStatus.OK);
     }
 
-    @GetMapping("getcourse/{id}")
+    @GetMapping("course/{id}")
     public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
         Course course = courseRepo.getCourseById(id);
         if (course == null) {
@@ -35,7 +41,7 @@ public class CourseController {
         return new ResponseEntity<>(course, HttpStatus.OK);
     }
 
-    @PostMapping("/createcourse")
+    @PostMapping("/course")
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         Course _course = courseRepo.save(course);
         return new ResponseEntity<>(_course, HttpStatus.CREATED);
@@ -47,7 +53,7 @@ public class CourseController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/courses/{id}")
+    @PutMapping("/course/{id}")
     public ResponseEntity<Course> modifyCourse(@PathVariable("id") long id, @RequestBody Course course) {
         Course existingCourse = courseRepo.getCourseById(id);
         if (existingCourse == null) {
@@ -59,5 +65,13 @@ public class CourseController {
         return new ResponseEntity<>(updateCourse, HttpStatus.OK);
     }
 
-
+    @PostMapping("/user/{id}/course")
+    public ResponseEntity<Course> CreateCourseUser(@PathVariable Long id ,@RequestBody Course course) {
+        User user = userRepo.getReferenceById(id);
+        Set<User> userSet = new HashSet<>();
+        userSet.add(user);
+        course.setUsers(userSet);
+        Course _course = courseRepo.save(course);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }
