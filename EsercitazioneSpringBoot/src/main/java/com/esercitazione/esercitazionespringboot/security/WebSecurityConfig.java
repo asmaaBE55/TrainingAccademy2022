@@ -66,6 +66,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/course").permitAll()
                 .requestMatchers("/api/course/**").hasRole("MODERATOR")
+                .requestMatchers("api/user/createadmin").hasRole("admin")
                 .requestMatchers("api/user/**").permitAll()
                 .anyRequest().authenticated();
 

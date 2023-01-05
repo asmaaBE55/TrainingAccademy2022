@@ -69,5 +69,8 @@ public class User {
         this.email = email;
         this.password = password;
     }
-
+    public void addRole(Role role) {
+        roles.add(role);
+        role.getName();
+    }
 }

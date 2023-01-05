@@ -1,5 +1,6 @@
 package com.esercitazione.esercitazionespringboot.payload.request;
 
+import com.esercitazione.esercitazionespringboot.model.ERole;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,4 +32,7 @@ public class SignupRequest {
     @Setter
     @Size(min = 6, max = 40)
     private String password;
+
+    public void setRole(ERole roleAdmin) {
+    }
 }
