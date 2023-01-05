@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -35,7 +36,8 @@ public class Course {
     @JoinTable(name = "courses_users",
              inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users=new LinkedHashSet<>();
-
+    @OneToMany(mappedBy = "course")
+    private List<Exam> exams;
     public Set<User> getUsers(){return users;}
 
     public void setUsers(Set<User> users){this.users=users;}
