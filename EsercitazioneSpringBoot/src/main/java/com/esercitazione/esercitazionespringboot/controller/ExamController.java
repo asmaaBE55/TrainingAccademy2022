@@ -47,7 +47,8 @@ public class ExamController {
     }
 
     @GetMapping("/search/valuation")
-    public List<Exam> getExamsByValuationRange(@RequestParam double minValuation, @RequestParam double maxValuation) {
+    public List<Exam> getExamsByValuationRange
+            (@RequestParam double minValuation, @RequestParam double maxValuation) {
         return examRepository.findByValuationBetween(minValuation, maxValuation);
     }
 }
