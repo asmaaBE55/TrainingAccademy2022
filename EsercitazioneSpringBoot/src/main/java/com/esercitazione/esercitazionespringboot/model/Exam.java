@@ -1,36 +1,51 @@
 package com.esercitazione.esercitazionespringboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 
+@Getter
+@Setter
 @Entity
-public class Exam{
-    @Id
-    @Getter
-    @Setter
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Getter
-    @Setter
-    private Date date;
-    @Getter
-    @Setter
-    private double valuation;
+@Table(name = "exams")
+public class Exam {
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    @Column (name = "evalutation")
+    private int evalutation;
+
+    @NotBlank
+    @Column
+    private int giorno;
+
+    @NotBlank
+    @Column
+    private int mese;
+
+    @NotBlank
+    @Column
+    private int anno;
+
+
+    @ManyToOne (cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JsonIgnore
+    @JoinTable(
+            name = "course_exams",
+            joinColumns = @JoinColumn(name = "exam_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+
     private Course course;
 
-
-    public Course getCourse() {
-        return this.course;
-    }
-    public void setCourse(Course course) {
-        this.course = course;
-    }
 }
 
 

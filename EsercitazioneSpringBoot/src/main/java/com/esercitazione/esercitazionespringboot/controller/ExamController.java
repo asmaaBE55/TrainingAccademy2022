@@ -1,55 +1,74 @@
 package com.esercitazione.esercitazionespringboot.controller;
 
 
+import com.esercitazione.esercitazionespringboot.business.services.ExamInterface;
 import com.esercitazione.esercitazionespringboot.model.Exam;
-import com.esercitazione.esercitazionespringboot.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
 public class ExamController {
-
     @Autowired
-    private ExamRepository examRepository;
+    ExamInterface examInterface;
 
-    @PostMapping("/createexam")
-    public Exam addExam(@RequestBody Exam exam) {
-        return examRepository.save(exam);
+    @PostMapping("/setExam")
+    public ResponseEntity<Exam> setExam(@RequestBody Exam exam) {
+        Exam _exam = examInterface.save(exam);
+
+        return new ResponseEntity<>(_exam, HttpStatus.CREATED);
     }
 
-    @GetMapping("/getexams")
-    public List<Exam> getAllExams() {
-        return examRepository.findAll();
-    }
+    @GetMapping("/getExams")
+    public ResponseEntity<Set<Exam>> getExam() {
+        Set<Exam> setExam = new HashSet<>();
+        setExam = examInterface.findAllExams();
 
-    @GetMapping("/getexam/{id}")
-    public Exam getExamById(@PathVariable Long id) {
-        return examRepository.findById(id).orElse(null);
-    }
-
-    @PutMapping("/modifyexam/{id}")
-    public Exam updateExam(@PathVariable Long id, @RequestBody Exam exam) {
-        Exam existingExam = examRepository.findById(id).orElse(null);
-        if (existingExam != null) {
-            existingExam.setValuation(exam.getValuation());
-            existingExam.setCourse(exam.getCourse());
-            return examRepository.save(existingExam);
+        if (setExam.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(setExam, HttpStatus.OK);
         }
-        return null;
     }
 
-    @DeleteMapping("/deleteexam/{id}")
-    public void deleteExam(@PathVariable Long id) {
-        examRepository.deleteById(id);
+    @PutMapping("/setExam/{id}")
+    public ResponseEntity<Exam> updateExam(@PathVariable("id") long id, @RequestBody Exam examRequest) {
+
+        //Exam _exam = examRepository.getReferenceById(id);
+        Exam _exam = examInterface.findExamByID(id);
+
+        if (_exam == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            _exam.setEvalutation(examRequest.getEvalutation());
+            _exam.setAnno(examRequest.getAnno());
+            _exam.setMese(examRequest.getMese());
+            _exam.setGiorno(examRequest.getGiorno());
+
+            Exam result = examInterface.save(_exam);
+
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
     }
 
-    @GetMapping("/search/valuation")
-    public List<Exam> getExamsByValuationRange
-            (@RequestParam double minValuation, @RequestParam double maxValuation) {
-        return examRepository.findByValuationBetween(minValuation, maxValuation);
+    @DeleteMapping("delExam/{id}")
+    public ResponseEntity<?> deleteExam(@PathVariable("id") long id) {
+        //examRepository.deleteById(id);
+        examInterface.deleteRoleByID(id);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("getExam/{vote}")
+    public Set<Exam> getExamVote(@PathVariable("vote") int vote) {
+        Set<Exam> setExam = examInterface.findExamByEvalutation(vote);
+        return setExam;
+    }
+
 }
 

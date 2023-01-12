@@ -1,23 +1,28 @@
 package com.esercitazione.esercitazionespringboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Set;
+@Getter
+@Setter
 @Entity
 @Table(name ="role")
 public class Role {
     @Id
-    @Getter
-    @Setter
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Enumerated(EnumType.STRING)
-    @Getter
-    @Setter
     @Column(length = 20)
     private ERole name;
 
-    public Role() {}
+    @JsonIgnore
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
+    public Role(){}
 
 }
