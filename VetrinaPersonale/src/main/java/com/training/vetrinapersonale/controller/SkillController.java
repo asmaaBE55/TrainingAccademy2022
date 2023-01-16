@@ -4,7 +4,9 @@ import com.training.vetrinapersonale.business.interfaces.SkillInterface;
 import com.training.vetrinapersonale.model.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -27,13 +29,13 @@ public class SkillController {
     }
 
     @PostMapping("/addSkill")
-   public ModelAndView insertSkill(@RequestParam String description, @RequestParam String name, @RequestParam String category){
-        Skill skill= new Skill();
+    public ModelAndView insertSkill(@RequestParam String description, @RequestParam String name, @RequestParam String category) {
+        Skill skill = new Skill();
         skill.setName(name);
         skill.setDescription(description);
         skill.setCategory(category);
         skillInterface.addSkill(skill);
-        return new ModelAndView("/jsp/addSkill.jsp","operation",true);
+        return new ModelAndView("/jsp/addSkill.jsp", "operation", true);
     }
 
-  }
+}

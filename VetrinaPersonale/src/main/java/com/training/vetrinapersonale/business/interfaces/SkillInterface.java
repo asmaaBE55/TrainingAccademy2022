@@ -6,9 +6,13 @@ import org.springframework.dao.DataAccessException;
 import java.util.List;
 
 public interface SkillInterface {
-    List<Skill> getAllSkills()throws DataAccessException;
+    List<Skill> getAllSkills() throws DataAccessException;
+
     Skill getSkillById(Long id);
-    void addSkill(Skill skill)throws DataAccessException;
+
+    void addSkill(Skill skill) throws DataAccessException;
+
     Skill updateSkill(Skill skill);
+
     void deleteSkill(Long id);
 }
