@@ -27,4 +27,8 @@ public class WebSiteInfoImpl implements WebSiteInterface {
         webSiteInfoRepository.deleteById(id);
     }
 
+    @Override
+    public void updateWebSiteInfo(long id) throws DataAccessException {
+        webSiteInfoRepository.updateWebsiteInfo(id, getWebSiteInfo().getName(), getWebSiteInfo().getDescription());
+    }
 }
