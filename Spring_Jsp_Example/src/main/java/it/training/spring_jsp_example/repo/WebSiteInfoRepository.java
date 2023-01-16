@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface WebSiteInfoRepository extends JpaRepository<WebSiteInfo, Long> {
     WebSiteInfo findFirstByOrderByIdDesc();
-    WebSiteInfo updateWebsiteInfo(long id);
+
 }

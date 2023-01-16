@@ -50,9 +50,14 @@ public class WebSiteInfoController {
     @PostMapping("updateInfo")
     public ModelAndView updateInfo(@RequestParam String id,@RequestParam String description, @RequestParam String name) {
         WebSiteInfo webSiteInfo = new WebSiteInfo();
+        webSiteInfo.setId(Long.valueOf(id));
         webSiteInfo.setName(name);
         webSiteInfo.setDescription(description);
-        webSiteInterface.updateWebSiteInfo(Long.parseLong(id));
+        webSiteInterface.updateWebSiteInfo(webSiteInfo);
         return new ModelAndView("/jsp/updateInfo.jsp", "operation", true);
+    }
+    @GetMapping("updateViewInfo")
+    public ModelAndView updateInfo() {
+        return new ModelAndView("/jsp/updateInfo.jsp");
     }
 }

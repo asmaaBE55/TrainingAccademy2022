@@ -28,7 +28,7 @@ public class WebSiteInfoImpl implements WebSiteInterface {
     }
 
     @Override
-    public void updateWebSiteInfo(long id) throws DataAccessException {
-         webSiteInfoRepository.updateWebsiteInfo(id);
+    public void updateWebSiteInfo(WebSiteInfo webSiteInfo) throws DataAccessException {
+         webSiteInfoRepository.save(webSiteInfo);
     }
 }

@@ -17,10 +17,14 @@
 </c:if>
 
 <div class="container">
-    <form action="${pageContext.request.contextPath}/updateInfo" method="get">
+    <form action="${pageContext.request.contextPath}/updateInfo" method="post">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">id</label>
             <input type="number" name="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="exampleInputEmail1" class="form-label">name</label>
+            <input type="text" name="name" class="form-control" id="Id" aria-describedby="emailHelp">
+            <label for="exampleInputEmail1" class="form-label">description</label>
+            <input type="text" name="description" class="form-control" id="Descripttion" aria-describedby="emailHelp">
         </div>
         <button type="submit" class="btn btn-primary">Invia</button>
     </form>

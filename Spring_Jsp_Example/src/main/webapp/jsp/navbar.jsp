@@ -16,7 +16,7 @@
                     <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/deleteViewInfo">Cancella Info</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/updateInfo">Modifica Info</a>
+                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/updateViewInfo">Modifica Info</a>
                 </li>
             </ul>
         </div>
