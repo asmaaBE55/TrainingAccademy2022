@@ -14,12 +14,12 @@
 <div class="container">
     <form action="${pageContext.request.contextPath}/addProject" method="post">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nome</label>
-            <input type="text" name="nome" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="exampleInputEmail2" class="form-label">Nome</label>
+            <input type="text" name="nome" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Descrizione</label>
-            <input type="text" name="descrizione" class="form-control" id="exampleInputPassword1">
+            <label for="exampleInputPassword2" class="form-label">Descrizione</label>
+            <input type="text" name="descrizione" class="form-control" id="exampleInputPassword2">
         </div>
         <button type="submit" class="btn btn-primary">Salva progetto</button>
     </form>
