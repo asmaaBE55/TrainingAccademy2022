@@ -4,7 +4,9 @@ import it.training.spring_jsp_example.business.interfaces.WebSiteInterface;
 import it.training.spring_jsp_example.model.WebSiteInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -38,20 +40,19 @@ public class WebSiteInfoController {
     }
 
     @GetMapping("deleteInfo")
-    public ModelAndView deleteInfo(@PathVariable("id") String id) {
+    public ModelAndView deleteInfo(@RequestParam String id) {
         if (!id.isEmpty()) {
             webSiteInterface.deleteWebSiteInfo(Long.parseLong(id));
             return new ModelAndView("/jsp/deleteInfo.jsp", "operation", true);
         }
         return new ModelAndView("/jsp/deleteInfo.jsp", "id_not_found", true);
     }
-
-    @PutMapping("/updateInfo/{id}")
-    public ModelAndView updateInfo(@PathVariable("id") String id, @RequestParam String description, @RequestParam String name) {
-        if (!id.isEmpty()) {
-            webSiteInterface.updateWebSiteInfo(Long.parseLong(id));
-            return new ModelAndView("/jsp/updateInfo.jsp", "operation", true);
-        }
-        return new ModelAndView("/jsp/updateInfo.jsp", "id_not_found", true);
+    @PostMapping("updateInfo")
+    public ModelAndView updateInfo(@RequestParam String id,@RequestParam String description, @RequestParam String name) {
+        WebSiteInfo webSiteInfo = new WebSiteInfo();
+        webSiteInfo.setName(name);
+        webSiteInfo.setDescription(description);
+        webSiteInterface.updateWebSiteInfo(Long.parseLong(id));
+        return new ModelAndView("/jsp/updateInfo.jsp", "operation", true);
     }
 }

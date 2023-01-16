@@ -13,22 +13,22 @@ public class WebSiteInfoImpl implements WebSiteInterface {
     WebSiteInfoRepository webSiteInfoRepository;
 
     @Override
-    public WebSiteInfo getWebSiteInfo() throws DataAccessException{
+    public WebSiteInfo getWebSiteInfo() throws DataAccessException {
         return webSiteInfoRepository.findFirstByOrderByIdDesc();
     }
 
     @Override
-    public void insertWebSiteInfo(WebSiteInfo webSiteInfo) throws DataAccessException{
+    public void insertWebSiteInfo(WebSiteInfo webSiteInfo) throws DataAccessException {
         webSiteInfoRepository.save(webSiteInfo);
     }
 
     @Override
-    public void deleteWebSiteInfo(long id) throws DataAccessException{
+    public void deleteWebSiteInfo(long id) throws DataAccessException {
         webSiteInfoRepository.deleteById(id);
     }
 
     @Override
     public void updateWebSiteInfo(long id) throws DataAccessException {
-        webSiteInfoRepository.updateWebsiteInfo(id, getWebSiteInfo().getName(), getWebSiteInfo().getDescription());
+         webSiteInfoRepository.updateWebsiteInfo(id);
     }
 }

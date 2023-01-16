@@ -6,12 +6,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface WebSiteInfoRepository extends JpaRepository<WebSiteInfo, Long> {
-    @Transactional
-    @Modifying
-    @Query("update WebSiteInfo w set w.name = ?1, w.description = ?2 where w.name = ?3 and w.description = ?4")
-    WebSiteInfo updateWebsiteInfo(long id,String name, String description, String name1, String description1);
-    WebSiteInfo findFirstByOrderByIdDesc();
+import java.util.List;
 
-    void updateWebsiteInfo(long id, String name, String description);
+public interface WebSiteInfoRepository extends JpaRepository<WebSiteInfo, Long> {
+    WebSiteInfo findFirstByOrderByIdDesc();
+    WebSiteInfo updateWebsiteInfo(long id);
 }
