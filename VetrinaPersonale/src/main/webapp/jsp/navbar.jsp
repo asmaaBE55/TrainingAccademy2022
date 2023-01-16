@@ -12,6 +12,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/addSkill">Aggiungi skill</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/addProject">Aggiungi progetto</a>
+                </li>
             </ul>
         </div>
     </div>
