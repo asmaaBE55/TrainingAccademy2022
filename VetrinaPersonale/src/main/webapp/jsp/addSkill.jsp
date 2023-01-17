@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -10,29 +11,24 @@
         ok
     </div>
 </c:if>
-
-<div class="container">
-    <form action="${pageContext.request.contextPath}/addSkill" method="post">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Description</label>
-            <input type="text" name="description" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword2" class="form-label">Category</label>
-            <input type="text" name="category" class="form-control" id="exampleInputPassword2">
-        </div>
-        <button type="submit" class="btn btn-primary">Salva skill</button>
-    </form>
-</div>
-<br>
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="text-muted">Prova</span>
+<form action="${pageContext.request.contextPath}/addSkillForm" method="post">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nome</label>
+        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
-</footer>
-</body>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Descrizione</label>
+        <input type="text" name="description" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <label for="categorySelect" class="form-label">Categoria</label>
+        <select name="category" class="form-control" id="categorySelect">
+            <option value="" disabled selected>Selziona una categoria</option>
+            <c:forEach var="category" items="${categories}">
+                <option value="${category.id}">${category.name}</option>
+            </c:forEach>
+        </select>
+    </div>
+
+<input type="submit" value="Salva" />
 <jsp:include page="scriptJS.jsp"></jsp:include>

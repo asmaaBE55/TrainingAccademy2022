@@ -6,11 +6,12 @@
 
 <div class="container mt-5">
     <div class="text-center">
-        <img src="<c:url value='C:\Users\hp\Desktop\TrainingAccademy2022\VetrinaPersonale\src\main\webapp\jsp\img1.jpg'/>" class="img-fluid" alt="image description">
+        <img src="<c:url value="${img1.jpg}"/>"/>
 <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
         <span class="text-muted"></span>
     </div>
 </footer>
-</body>
+
+</div></div></body>
 <jsp:include page="scriptJS.jsp"></jsp:include>

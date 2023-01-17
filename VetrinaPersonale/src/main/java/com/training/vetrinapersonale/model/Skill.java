@@ -1,13 +1,12 @@
 package com.training.vetrinapersonale.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -16,7 +15,12 @@ import java.util.List;
 public class Skill extends BaseEntity {
     private String name;
     private String description;
-    private String category;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @ManyToMany(mappedBy = "skills")
-    private List<Developer> developers = new ArrayList<>();
+    private Set<Project> projects;
+
 }
