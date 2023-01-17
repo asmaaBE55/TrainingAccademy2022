@@ -6,9 +6,9 @@
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
 <c:if test="${operation == true}">
-<div class="alert alert-success" role="alert">
-   ok
-</div>
+    <div class="alert alert-success" role="alert">
+        ok
+    </div>
 </c:if>
 
 <div class="container">

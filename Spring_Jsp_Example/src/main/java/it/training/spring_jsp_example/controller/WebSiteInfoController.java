@@ -14,19 +14,19 @@ public class WebSiteInfoController {
     @Autowired
     WebSiteInterface webSiteInterface;
 
-    @GetMapping(path = {"/", "/index"})
+    @GetMapping(path = {"/home", "/index", "/"})
     public ModelAndView home() {
         WebSiteInfo webSiteInfo = webSiteInterface.getWebSiteInfo();
         return new ModelAndView("/jsp/index.jsp", "Info", webSiteInfo);
     }
 
-    @GetMapping("createInfo")
+    @GetMapping("/admin/createInfo")
     public ModelAndView createInfo() {
-        return new ModelAndView("/jsp/createInfo.jsp");
+        return new ModelAndView("jsp/createInfo.jsp");
     }
 
-    @PostMapping("createInfo")
-    public ModelAndView insertInfo(@RequestParam String description, @RequestParam String name) {
+    @PostMapping("/admin/createInfo")
+    public ModelAndView createInfo(@RequestParam String description, @RequestParam String name) {
         WebSiteInfo webSiteInfo = new WebSiteInfo();
         webSiteInfo.setName(name);
         webSiteInfo.setDescription(description);
@@ -34,30 +34,17 @@ public class WebSiteInfoController {
         return new ModelAndView("/jsp/createInfo.jsp", "operation", true);
     }
 
-    @GetMapping("deleteViewInfo")
+    @GetMapping("/admin/deleteViewInfo")
     public ModelAndView deleteInfo() {
         return new ModelAndView("/jsp/deleteInfo.jsp");
     }
 
-    @GetMapping("deleteInfo")
+    @GetMapping("/admin/deleteInfo")
     public ModelAndView deleteInfo(@RequestParam String id) {
         if (!id.isEmpty()) {
             webSiteInterface.deleteWebSiteInfo(Long.parseLong(id));
             return new ModelAndView("/jsp/deleteInfo.jsp", "operation", true);
         }
         return new ModelAndView("/jsp/deleteInfo.jsp", "id_not_found", true);
-    }
-    @PostMapping("updateInfo")
-    public ModelAndView updateInfo(@RequestParam String id,@RequestParam String description, @RequestParam String name) {
-        WebSiteInfo webSiteInfo = new WebSiteInfo();
-        webSiteInfo.setId(Long.valueOf(id));
-        webSiteInfo.setName(name);
-        webSiteInfo.setDescription(description);
-        webSiteInterface.updateWebSiteInfo(webSiteInfo);
-        return new ModelAndView("/jsp/updateInfo.jsp", "operation", true);
-    }
-    @GetMapping("updateViewInfo")
-    public ModelAndView updateInfo() {
-        return new ModelAndView("/jsp/updateInfo.jsp");
     }
 }
