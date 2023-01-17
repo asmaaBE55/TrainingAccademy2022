@@ -2,6 +2,7 @@ package com.training.vetrinapersonale.business.impl;
 
 import com.training.vetrinapersonale.business.interfaces.CategoryInterface;
 import com.training.vetrinapersonale.model.Category;
+import com.training.vetrinapersonale.model.Project;
 import com.training.vetrinapersonale.repo.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -20,5 +21,10 @@ public class CategoryImpl implements CategoryInterface {
     @Override
     public List<Category> getAllCategories() throws DataAccessException {
         return categoryRepository.findAll();
+    }
+
+    @Override
+    public void addCategory(Category category) throws DataAccessException {
+        categoryRepository.save(category);
     }
 }

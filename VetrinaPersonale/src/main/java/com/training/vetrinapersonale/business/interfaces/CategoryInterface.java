@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CategoryInterface {
     List<Category> getAllCategories() throws DataAccessException;
+
+    void addCategory(Category category)throws DataAccessException;
 }

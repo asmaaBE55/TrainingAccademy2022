@@ -14,12 +14,12 @@ public class ProjectController {
     @Autowired
     private ProjectInterface projectInterface;
 
-    @GetMapping("addProject")
+    @GetMapping("/admin/addProject")
     public ModelAndView addProject() {
         return new ModelAndView("/jsp/addProject.jsp");
     }
 
-    @PostMapping("/addProject")
+    @PostMapping("/admin/addProject")
     public ModelAndView insertProject(@RequestParam String descrizione, @RequestParam String nome) {
         Project project = new Project();
         project.setNome(nome);

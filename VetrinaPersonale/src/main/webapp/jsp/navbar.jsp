@@ -9,12 +9,42 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
                 </li>
+
+
+                <sec:authorize access="hasRole('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="${pageContext.request.contextPath}/admin/addSkill">Aggiungi skill</a>
+                    </li>
+                </sec:authorize>
+
+
+                <sec:authorize access="hasRole('ADMIN')">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/addSkill">Aggiungi skill</a>
+                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/admin/addProject">Aggiungi progetto</a>
                 </li>
+                </sec:authorize>
+
+
+                <sec:authorize access="hasRole('ADMIN')">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/addProject">Aggiungi progetto</a>
+                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/admin/addCategory">Aggiungi categoria</a>
                 </li>
+                </sec:authorize>
+
+
+                <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/logout">Logout</a>
+                    </li>
+                </sec:authorize>
+
+
+                <sec:authorize access="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/login">Login</a>
+                    </li>
+                </sec:authorize>
             </ul>
         </div>
     </div>

@@ -26,12 +26,12 @@ public class SkillController {
         return new ModelAndView("/jsp/home.jsp", "Info", skills);
     }
 
-    @GetMapping("addSkill")
+    @GetMapping("/admin/addSkill")
     public ModelAndView addSkill() {
         return new ModelAndView("/jsp/addSkill.jsp");
     }
 
-    @PostMapping("/addSkill")
+    @PostMapping("/admin/addSkill")
     public ModelAndView addSkillForm(@RequestParam String name, @RequestParam String description, @RequestParam Category category) {
         Skill skills= new Skill();
         skills.setName(name);
