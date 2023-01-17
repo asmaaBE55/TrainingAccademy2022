@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
@@ -10,7 +11,7 @@
     ok
 </div>
 </c:if>
-<form action="${pageContext.request.contextPath}/insertCategory" method="post">
+<form action="${pageContext.request.contextPath}/addCategory" method="post">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Nome</label>
         <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -19,7 +20,7 @@
         <select name="category" class="form-control" id="skillSelect">
             <option value="" disabled selected>Selziona skills</option>
             <c:forEach var="skill" items="${skills}">
-                <option value="${skill.name}">${skill.description}</option>
+                <option value="${skill.id}">${skill.description}</option>
             </c:forEach>
         </select>
     </div>
