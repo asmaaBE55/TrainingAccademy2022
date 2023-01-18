@@ -87,7 +87,7 @@ public class CourseController {
                 .body(_course.getData());
     }
 
-    @DeleteMapping("/files/{id}")
+    @PutMapping("/files/{id}")
     public ResponseEntity<byte[]> deleteFile(@PathVariable Long id) {
         courseBo.deleteById(id);
         return ResponseEntity.ok().build();
