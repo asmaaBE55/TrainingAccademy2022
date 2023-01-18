@@ -3,7 +3,7 @@ package it.course.rest.examplecourse.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
